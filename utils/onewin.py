@@ -84,9 +84,10 @@ class OneWin:
                         for num in range(10):
                             tool = tool.replace(str(num),'')
                         tool += str(info[tool]+1)
-                        price = self.PRICES[tool]
-                        if self.balance >= price:
-                            await self.upgrade(name = tool)
+                        if tool in self.PRICES:
+                            price = self.PRICES[tool]
+                            if self.balance >= price:
+                                await self.upgrade(name = tool)
                 await self.everydayreward()
                 for _ in range(random.randint(1,100)):
                     await self.tap()
