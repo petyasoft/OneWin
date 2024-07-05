@@ -66,6 +66,7 @@
 Thank you for using Blum Telegram Bot! Don't forget to follow our [Telegram channel](https://t.me/petyasofts) for updates.
 
 DONATIONS
+
 Ton : UQCcEj6OWmdJ8FIvY8tVmSsGddn57PEyn438qfzbcgEZzb-O
 
 EVM : 0xf3eaaf294f5883DD062900E6d9c578F695b7D2D2
