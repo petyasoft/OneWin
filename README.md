@@ -1,5 +1,5 @@
 
-# Software for OneWin telegram Bot
+# Software for 1Win telegram Bot
 
 ## Requirements
 - Python 3.11 (you can install it [here](https://www.python.org/downloads/release/python-3110/))
