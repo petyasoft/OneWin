@@ -189,7 +189,7 @@ class OneWin:
         del self.session.headers['access-control-request-headers']
         del self.session.headers['access-control-request-method']
         self.session.headers['authorization'] = authorization
-        await asyncio.sleep(1)
+        await asyncio.sleep(2)
         
     async def get_balance(
         self 
