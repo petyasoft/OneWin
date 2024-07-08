@@ -61,37 +61,42 @@ class OneWin:
                 return 0
             logger.info(f"main | Thread {self.thread} | {self.name} | Start! | PROXY : {self.proxy}")
             while True:
-                info = await self.mining_info()
-                for tool in list(self.REQUIRED.keys())[::-1]:
-                    if tool not in info:
-                        if self.REQUIRED[tool] == None:
-                            tool += '1'
-                            price = self.PRICES[tool]
-                            if self.balance >= price:
-                                await self.upgrade(name = tool)
-                        else:
-                            required = self.REQUIRED[tool]
-                            for num in range(10):
-                                required = required.replace(str(num),'')
-                            if required in info:
-                                level_now = info[required]
-                                if level_now >= int(self.REQUIRED[tool].replace(required,'')):
-                                    tool += '1'
-                                    price = self.PRICES[tool]
-                                    if self.balance >= price:
-                                        await self.upgrade(name = tool)
-                    else:
-                        for num in range(10):
-                            tool = tool.replace(str(num),'')
-                        if (info[tool]) < config.UPGRADE_LEVEL:
-                            tool += str(info[tool]+1)
-                            if tool in self.PRICES:
+                try:
+                    info = await self.mining_info()
+                    for tool in list(self.REQUIRED.keys())[::-1]:
+                        if tool not in info:
+                            if self.REQUIRED[tool] == None:
+                                tool += '1'
                                 price = self.PRICES[tool]
                                 if self.balance >= price:
                                     await self.upgrade(name = tool)
-                await self.everydayreward()
-                for _ in range(random.randint(1,100)):
-                    await self.tap()
+                            else:
+                                required = self.REQUIRED[tool]
+                                for num in range(10):
+                                    required = required.replace(str(num),'')
+                                if required in info:
+                                    level_now = info[required]
+                                    if level_now >= int(self.REQUIRED[tool].replace(required,'')):
+                                        tool += '1'
+                                        price = self.PRICES[tool]
+                                        if self.balance >= price:
+                                            await self.upgrade(name = tool)
+                        else:
+                            for num in range(10):
+                                tool = tool.replace(str(num),'')
+                            if (info[tool]) < config.UPGRADE_LEVEL:
+                                tool += str(info[tool]+1)
+                                if tool in self.PRICES:
+                                    price = self.PRICES[tool]
+                                    if self.balance >= price:
+                                        await self.upgrade(name = tool)
+                    await self.everydayreward()
+                    for _ in range(random.randint(1,100)):
+                        await self.tap()
+                except Exception as err:
+                     logger.error(f"main | Thread {self.thread} | {self.name} | {err}")
+                    await asyncio.sleep(round(random.uniform(30,60),2))
+                    
         except Exception as err:
             logger.error(f"main | Thread {self.thread} | {self.name} | {err}")
             await self.session.close()
