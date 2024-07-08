@@ -55,12 +55,12 @@ class OneWin:
         
     async def main(self):
         try:
+            login = await self.login()
+            if login == False:
+                await self.session.close()
+                return 0
             logger.info(f"main | Thread {self.thread} | {self.name} | Start! | PROXY : {self.proxy}")
             while True:
-                login = await self.login()
-                if login == False:
-                    await self.session.close()
-                    return 0
                 info = await self.mining_info()
                 for tool in list(self.REQUIRED.keys())[::-1]:
                     if tool not in info:
@@ -94,12 +94,14 @@ class OneWin:
                     await self.tap()
         except Exception as err:
             logger.error(f"main | Thread {self.thread} | {self.name} | {err}")
+            await self.session.close()
             await asyncio.sleep(round(random.uniform(30,60),2))
             
     def generate_boundary(self):
         return '----WebKitFormBoundary' + ''.join(random.choices(string.ascii_letters + string.digits, k=16))
     
     async def upgrade(self, name):
+        await self.get_balance()
         self.session.headers['content-type'] = 'application/json'
         json_data = {
             'id': name,
@@ -128,7 +130,6 @@ class OneWin:
         
     async def mining_info(self):
         response = await self.session.get('https://crypto-clicker-backend-go-prod.100hp.app/minings', proxy = self.proxy)
-        
         authorization = self.session.headers['authorization']
         del self.session.headers['authorization']
         self.session.headers['access-control-request-headers'] = 'authorization'
@@ -221,7 +222,7 @@ class OneWin:
             del self.session.headers['content-type']
             self.session.headers['accept'] = '*/*'
             resp = await resp.json()
-            self.session.headers['Authorization'] = "Bearer " + (resp).get("token")
+            self.session.headers['authorization'] = "Bearer " + (resp).get("token")
             await self.get_balance()
             await asyncio.sleep(round(random.uniform(3, 5), 2))
             return True
