@@ -94,7 +94,7 @@ class OneWin:
                     for _ in range(random.randint(1,100)):
                         await self.tap()
                 except Exception as err:
-                     logger.error(f"main | Thread {self.thread} | {self.name} | {err}")
+                    logger.error(f"main | Thread {self.thread} | {self.name} | {err}")
                     await asyncio.sleep(round(random.uniform(30,60),2))
                     
         except Exception as err:
