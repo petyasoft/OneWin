@@ -19,7 +19,7 @@ WORKDIR = "sessions/"
 USE_PROXY = True # True/False
 
 # до какого уровня прокачивать
-UPGRADE_LEVEL = 5
+UPGRADE_LEVEL = 20
 
 hello ='''              _                               __  _        
  _ __    ___ | |_  _   _   __ _  ___   ___   / _|| |_  ___ 
