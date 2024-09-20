@@ -63,14 +63,24 @@
 
 ---
 
+DONATIONS 
+```txt
+ton   : UQCLxqnBscAH1i8WNU2qfqXrAKCd5AoNgbuNrvZHTZOLI3Yg
+
+sol   : BKmvLTyW29Pkb1yixJrUh6q6JgCkyqY5VGAN5DwgLatK
+
+ltc   : ltc1q4jxmwt2hrwz05jgplaxsx7ytdmyd06n9w43qtx
+
+btc   : bc1qfhy5de2xmewzlyd8gct8e8lxxwkm33u359sxpe
+
+evm   : 0xffD503AD80C9486D8588fD0DE2E129F2F0E1d618
+
+trc20 : TN6qKhsbjB1WaetixdRigNrmUw1MCqAyh3
+
+dash  : Xu4VUgxQTKk5URkbgMiZv6uLzJpHR4NH6y
+
+zec   : t1aFA4poLSA6psJ1pbsK63MeXKQ6ECkqz5M
+```
+
 Thank you for using Blum Telegram Bot! Don't forget to follow our [Telegram channel](https://t.me/petyasofts) for updates.
 
-DONATIONS
-
-Ton : UQCcEj6OWmdJ8FIvY8tVmSsGddn57PEyn438qfzbcgEZzb-O
-
-EVM : 0xf3eaaf294f5883DD062900E6d9c578F695b7D2D2
-
-SOL : 5tfBWHWKYuirxUS3TcdLUs7Rj9GckWPWH8gGU7v6xVby
-
-TRON : TBYhN6QbvnVsumUEV1bFXJJvQabGoFjj1m
